@@ -49,7 +49,7 @@ func readInput(filename string) (ns []int, err error) {
 		line := scanner.Text()
 		mass, err := strconv.Atoi(line)
 		if err != nil {
-			return ns, nil
+			return ns, err
 		}
 		ns = append(ns, mass)
 	}

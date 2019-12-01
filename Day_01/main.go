@@ -17,8 +17,8 @@ func main() {
 		sumOne += calcFuelRequired(mass)
 		sumTwo += calcFuelRequiredPartTwo(mass)
 	}
-	fmt.Printf("The solution for Part One is %d\n", sumOne)
-	fmt.Printf("The solution for Part Two is %d\n", sumTwo)
+	fmt.Printf("The solution for part one is %d\n", sumOne)
+	fmt.Printf("The solution for part two is %d\n", sumTwo)
 }
 
 func calcFuelRequired(mass int) int {

@@ -28,10 +28,11 @@ func calcFuelRequired(mass int) int {
 }
 
 func calcFuelRequiredPartTwo(mass int) (sum int) {
-	for mass > 0 {
+	for true {
 		mass = calcFuelRequired(mass)
-		if mass > 0 {
-			sum += mass
+		sum += mass
+		if mass < 3 {
+			break
 		}
 	}
 	return sum

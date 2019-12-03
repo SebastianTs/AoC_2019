@@ -50,7 +50,6 @@ func findCollision(wires []wire) int {
 					field[cur] = make([]bool, len(wires))
 				}
 				field[cur][i] = true
-
 			}
 		}
 
@@ -107,6 +106,7 @@ func signalDelay(wires []wire) int {
 			}
 		}
 		if count > 1 {
+			// TODO solve puzzle for more than two wires
 			distances = append(distances, paths[k][0]+paths[k][1])
 		}
 	}
@@ -114,7 +114,7 @@ func signalDelay(wires []wire) int {
 }
 
 func min(m []int) int {
-	min := 1<<(32-1) - 1
+	min := 1<<(64-1) - 1
 	for _, v := range m {
 		if v < min {
 			min = v

@@ -11,38 +11,38 @@ const (
 )
 
 func main() {
-	count, part2Count := 0, 0
+	c1, c2 := 0, 0
 	cur := [digits]int{}
 	for i := start; i < end; i++ {
 		cur = intToArray(i)
 		if meetsCriteria(cur) {
-			count++
+			c1++
 		}
 		if meetsCriteriaExactDouble(cur) {
-			part2Count++
+			c2++
 		}
 	}
-	fmt.Printf("Solution 1:\t %d\nSolution 2:\t%d\n", count, part2Count)
+	fmt.Printf("Solution 1:\t%d\nSolution 2:\t%d\n", c1, c2)
 }
 
 func meetsCriteria(lst [digits]int) bool {
 	hasDouble := false
-	notDecrasing := false
+	Decrasing := true
 	for i := 0; i < len(lst)-1; i++ {
 		if lst[i] == lst[i+1] {
 			hasDouble = true
 		}
-		notDecrasing = lst[i] <= lst[i+1]
-		if !notDecrasing {
+		Decrasing = lst[i] > lst[i+1]
+		if Decrasing {
 			break
 		}
 	}
-	return hasDouble && notDecrasing
+	return hasDouble && !Decrasing
 }
 
 func meetsCriteriaExactDouble(lst [digits]int) bool {
 	hasDouble := false
-	notDecrasing := false
+	Decrasing := true
 	count := map[int]int{}
 	doubles := []int{}
 	for i := 0; i < len(lst); i++ {
@@ -52,8 +52,8 @@ func meetsCriteriaExactDouble(lst [digits]int) bool {
 		if lst[i] == lst[i+1] {
 			doubles = append(doubles, lst[i])
 		}
-		notDecrasing = lst[i] <= lst[i+1]
-		if !notDecrasing {
+		Decrasing = lst[i] > lst[i+1]
+		if Decrasing {
 			break
 		}
 	}
@@ -63,8 +63,9 @@ func meetsCriteriaExactDouble(lst [digits]int) bool {
 			break
 		}
 	}
-	return hasDouble && notDecrasing
+	return hasDouble && !Decrasing
 }
+
 func intToArray(number int) (out [digits]int) {
 	for i := 0; i < digits; i++ {
 		out[digits-i-1] = number % 10
